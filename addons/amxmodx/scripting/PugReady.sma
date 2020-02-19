@@ -47,7 +47,7 @@ PUG_ReadySystem(bool:Enable)
 	{
 		set_task(0.5,"PUG_HudListReady",PUG_MOD_TASK_READY_LIST, .flags="b");
 		
-		client_print_color(0,print_team_red,"%s %L",PUG_MOD_HEADER,LANG_SERVER,"PUG_READY_START");
+		client_print_color(0,print_team_red,"%s %L",PUG_MOD_HEADER,LANG_PLAYER,"PUG_READY_START");
 	}
 	else
 	{
@@ -85,16 +85,16 @@ public PUG_HudListReady()
 	{
 		PUG_ReadySystem(false);
 		
-		client_print_color(0,print_team_red,"%s %L",PUG_MOD_HEADER,LANG_SERVER,"PUG_ALL_READY");
+		client_print_color(0,print_team_red,"%s %L",PUG_MOD_HEADER,LANG_PLAYER,"PUG_ALL_READY");
 		PUG_RunState();
 	}
 	else
 	{
 		set_hudmessage(0,255,0,0.23,0.02,0,0.0,0.6,0.0,0.0,1);
-		show_hudmessage(0,"%L",LANG_SERVER,"PUG_LIST_NOTREADY",(iPlayersCount - iReadyCount),g_iPlayersMin);
+		show_hudmessage(0,"%L",LANG_PLAYER,"PUG_LIST_NOTREADY",(iPlayersCount - iReadyCount),g_iPlayersMin);
 	
 		set_hudmessage(0,255,0,0.58,0.02,0,0.0,0.6,0.0,0.0,2);
-		show_hudmessage(0,"%L",LANG_SERVER,"PUG_LIST_READY",iReadyCount,g_iPlayersMin);
+		show_hudmessage(0,"%L",LANG_PLAYER,"PUG_LIST_READY",iReadyCount,g_iPlayersMin);
 		
 		set_hudmessage(255,255,225,0.58,0.02,0,0.0,0.6,0.0,0.0,3);
 		show_hudmessage(0,"^n%s",szList[0]);
@@ -118,13 +118,13 @@ public PUG_Ready(id)
 				new szName[MAX_NAME_LENGTH];
 				get_user_name(id,szName,charsmax(szName));
 				
-				client_print_color(0,id,"%s %L",PUG_MOD_HEADER,LANG_SERVER,"PUG_READY",szName);				
+				client_print_color(0,id,"%s %L",PUG_MOD_HEADER,LANG_PLAYER,"PUG_READY",szName);				
 				return PLUGIN_HANDLED;
 			}
 		}
 	}
 
-	client_print_color(id,id,"%s %L",PUG_MOD_HEADER,LANG_SERVER,"PUG_CMD_ERROR");
+	client_print_color(id,id,"%s %L",PUG_MOD_HEADER,id,"PUG_CMD_ERROR");
 	
 	return PLUGIN_HANDLED;
 }
@@ -142,13 +142,13 @@ public PUG_NotReady(id)
 				new szName[MAX_NAME_LENGTH];
 				get_user_name(id,szName,charsmax(szName));
 				
-				client_print_color(0,id,"%s %L",PUG_MOD_HEADER,LANG_SERVER,"PUG_NOTREADY",szName);
+				client_print_color(0,id,"%s %L",PUG_MOD_HEADER,LANG_PLAYER,"PUG_NOTREADY",szName);
 				return PLUGIN_HANDLED;
 			}
 		}
 	}
 
-	client_print_color(id,id,"%s %L",PUG_MOD_HEADER,LANG_SERVER,"PUG_CMD_ERROR");
+	client_print_color(id,id,"%s %L",PUG_MOD_HEADER,id,"PUG_CMD_ERROR");
 	
 	return PLUGIN_HANDLED;
 }

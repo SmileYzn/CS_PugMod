@@ -41,17 +41,17 @@ public PUG_HP(id)
 			
 				get_user_name(iPlayer,szName,charsmax(szName));
 				
-				client_print_color(id,iPlayer,"%s %L",PUG_MOD_HEADER,LANG_SERVER,"PUG_HP_CMD",szName,get_user_health(iPlayer),get_user_armor(iPlayer));
+				client_print_color(id,iPlayer,"%s %L",PUG_MOD_HEADER,id,"PUG_HP_CMD",szName,get_user_health(iPlayer),get_user_armor(iPlayer));
 			}
 		}
 		else
 		{
-			client_print_color(id,id,"%s %L",PUG_MOD_HEADER,LANG_SERVER,"PUG_HP_NONE");
+			client_print_color(id,id,"%s %L",PUG_MOD_HEADER,id,"PUG_HP_NONE");
 		}
 	}
 	else
 	{
-		client_print_color(id,id,"%s %L",PUG_MOD_HEADER,LANG_SERVER,"PUG_CMD_ERROR");
+		client_print_color(id,id,"%s %L",PUG_MOD_HEADER,id,"PUG_CMD_ERROR");
 	}
 	
 	return PLUGIN_HANDLED;
@@ -80,19 +80,19 @@ public PUG_DamageDone(id)
 				bStats = true;
 				get_user_name(iPlayer,szName,charsmax(szName));
 
-				client_print_color(id,iPlayer,"%s %L",PUG_MOD_HEADER,LANG_SERVER,"PUG_DMG",szName,szStats[STATSX_HITS],szStats[STATSX_DAMAGE]);
+				client_print_color(id,iPlayer,"%s %L",PUG_MOD_HEADER,id,"PUG_DMG",szName,szStats[STATSX_HITS],szStats[STATSX_DAMAGE]);
 			}
 		}
 		
 		if(!bStats)
 		{
-			client_print_color(id,id,"%s %L",PUG_MOD_HEADER,LANG_SERVER,"PUG_NODMG");
+			client_print_color(id,id,"%s %L",PUG_MOD_HEADER,id,"PUG_NODMG");
 		}
 		
 	}
 	else
 	{
-		client_print_color(id,id,"%s %L",PUG_MOD_HEADER,LANG_SERVER,"PUG_CMD_ERROR");
+		client_print_color(id,id,"%s %L",PUG_MOD_HEADER,id,"PUG_CMD_ERROR");
 	}
 	
 	return PLUGIN_HANDLED;
@@ -121,18 +121,18 @@ public PUG_DamageReceived(id)
 				bStats = true;
 				get_user_name(iPlayer,szName,charsmax(szName));
 				
-				client_print_color(id,iPlayer,"%s %L",PUG_MOD_HEADER,LANG_SERVER,"PUG_RDMG",szName,szStats[STATSX_HITS],szStats[STATSX_DAMAGE]);
+				client_print_color(id,iPlayer,"%s %L",PUG_MOD_HEADER,id,"PUG_RDMG",szName,szStats[STATSX_HITS],szStats[STATSX_DAMAGE]);
 			}
 		}
 		
 		if(!bStats)
 		{
-			client_print_color(id,id,"%s %L",PUG_MOD_HEADER,LANG_SERVER,"PUG_NORDMG");
+			client_print_color(id,id,"%s %L",PUG_MOD_HEADER,id,"PUG_NORDMG");
 		}		
 	}
 	else
 	{
-		client_print_color(id,id,"%s %L",PUG_MOD_HEADER,LANG_SERVER,"PUG_CMD_ERROR");
+		client_print_color(id,id,"%s %L",PUG_MOD_HEADER,id,"PUG_CMD_ERROR");
 	}
 	
 	return PLUGIN_HANDLED;
@@ -162,18 +162,18 @@ public PUG_DamageSummary(id)
 				bStats = true;
 				get_user_name(iPlayer,szName,charsmax(szName));
 				
-				client_print_color(id,iPlayer,"%s %L",PUG_MOD_HEADER,LANG_SERVER,"PUG_SUM",szStats[0][STATSX_DAMAGE],szStats[0][STATSX_HITS],szStats[1][STATSX_DAMAGE],szStats[1][STATSX_HITS],szName,is_user_alive(iPlayer) ? get_user_health(iPlayer) : 0);
+				client_print_color(id,iPlayer,"%s %L",PUG_MOD_HEADER,id,"PUG_SUM",szStats[0][STATSX_DAMAGE],szStats[0][STATSX_HITS],szStats[1][STATSX_DAMAGE],szStats[1][STATSX_HITS],szName,is_user_alive(iPlayer) ? get_user_health(iPlayer) : 0);
 			}
 		}
 		
 		if(!bStats)
 		{
-			client_print_color(id,id,"%s %L",PUG_MOD_HEADER,LANG_SERVER,"PUG_NOSUM");
+			client_print_color(id,id,"%s %L",PUG_MOD_HEADER,id,"PUG_NOSUM");
 		}
 	}
 	else
 	{
-		client_print_color(id,id,"%s %L",PUG_MOD_HEADER,LANG_SERVER,"PUG_CMD_ERROR");
+		client_print_color(id,id,"%s %L",PUG_MOD_HEADER,id,"PUG_CMD_ERROR");
 	}
 	
 	return PLUGIN_HANDLED;

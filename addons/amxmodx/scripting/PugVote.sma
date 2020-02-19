@@ -86,11 +86,11 @@ public PUG_VoteKick(id)
 			
 			menu_display(id,iMenu);
 			
-			client_print_color(id,id,"%s %L",PUG_MOD_HEADER,LANG_SERVER,"PUG_VOTE_KICK_MAIN");
+			client_print_color(id,id,"%s %L",PUG_MOD_HEADER,id,"PUG_VOTE_KICK_MAIN");
 		}
 		else
 		{
-			client_print_color(id,id,"%s %L",PUG_MOD_HEADER,LANG_SERVER,"PUG_VOTE_KICK_NEED",iNeedPlayers);
+			client_print_color(id,id,"%s %L",PUG_MOD_HEADER,id,"PUG_VOTE_KICK_NEED",iNeedPlayers);
 		}
 	}
 	
@@ -140,14 +140,14 @@ public HANDLER_MenuVoteKick(id,iMenu,iKey)
 				
 				server_cmd("kick #%i ^"%L^"",get_user_userid(iPlayer),LANG_SERVER,"PUG_VOTE_KICK_MSG");
 				
-				client_print_color(0,iPlayer,"%s %L",PUG_MOD_HEADER,LANG_SERVER,"PUG_VOTE_KICK_KICKED",szOption,iVotesNeed);
+				client_print_color(0,iPlayer,"%s %L",PUG_MOD_HEADER,LANG_PLAYER,"PUG_VOTE_KICK_KICKED",szOption,iVotesNeed);
 			}
 			else
 			{
 				new szName[MAX_NAME_LENGTH];
 				get_user_name(id,szName,charsmax(szName));
 				
-				client_print_color(0,id,"%s %L",PUG_MOD_HEADER,LANG_SERVER,"PUG_VOTE_KICK_VOTED",szName,szOption,iVotesLack);
+				client_print_color(0,id,"%s %L",PUG_MOD_HEADER,LANG_PLAYER,"PUG_VOTE_KICK_VOTED",szName,szOption,iVotesLack);
 			}
 		}
 	}
@@ -176,12 +176,12 @@ public PUG_VoteMap(id)
 			}
 			
 			PUG_DisplayMenuSingle(id,iMenu);
-			client_print_color(id,id,"%s %L",PUG_MOD_HEADER,LANG_SERVER,"PUG_VOTE_MAP_MAIN");
+			client_print_color(id,id,"%s %L",PUG_MOD_HEADER,id,"PUG_VOTE_MAP_MAIN");
 		}
 	}
 	else
 	{
-		client_print_color(id,id,"%s %L",PUG_MOD_HEADER,LANG_SERVER,"PUG_VOTE_MAP_VOTE");
+		client_print_color(id,id,"%s %L",PUG_MOD_HEADER,id,"PUG_VOTE_MAP_VOTE");
 	}
 	
 	return PLUGIN_HANDLED;
@@ -212,14 +212,14 @@ public HANDLER_MenuMap(id,iMenu,iKey)
 			new szName[MAX_NAME_LENGTH];
 			get_user_name(id,szName,charsmax(szName));
 			
-			client_print_color(0,id,"%s %L",PUG_MOD_HEADER,LANG_SERVER,"PUG_VOTE_MAP_PICK1",szName,g_szMapList[iMapIndex],(iNeedVotes - g_iMapVotes[iMapIndex]));	
-			client_print_color(0,id,"%s %L",PUG_MOD_HEADER,LANG_SERVER,"PUG_VOTE_MAP_PICK2");
+			client_print_color(0,id,"%s %L",PUG_MOD_HEADER,LANG_PLAYER,"PUG_VOTE_MAP_PICK1",szName,g_szMapList[iMapIndex],(iNeedVotes - g_iMapVotes[iMapIndex]));	
+			client_print_color(0,id,"%s %L",PUG_MOD_HEADER,LANG_PLAYER,"PUG_VOTE_MAP_PICK2");
 		}
 		else
 		{
 			set_task(5.0,"PUG_ChangeLevel",iMapIndex);
 			
-			client_print_color(0,id,"%s %L",PUG_MOD_HEADER,LANG_SERVER,"PUG_VOTE_MAP_CHANGE",g_szMapList[iMapIndex]);
+			client_print_color(0,id,"%s %L",PUG_MOD_HEADER,LANG_PLAYER,"PUG_VOTE_MAP_CHANGE",g_szMapList[iMapIndex]);
 		}
 	}
 	
