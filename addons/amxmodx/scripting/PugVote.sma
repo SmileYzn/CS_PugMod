@@ -46,7 +46,7 @@ public plugin_init()
 
 public plugin_cfg()
 {
-	g_iMapCount = PUG_GetMapList(g_szMapList,sizeof(g_szMapList));
+	g_iMapCount = PUG_GetMapList(g_szMapList,sizeof(g_szMapList),get_cvar_num("pug_vote_map_stayhere"));
 }
 
 public client_putinserver(id)

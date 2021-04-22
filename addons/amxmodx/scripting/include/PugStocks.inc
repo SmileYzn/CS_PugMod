@@ -112,15 +112,19 @@ stock PUG_ExecuteCommand(id,szCommand[],szLang[],bCheck)
  *
  * @return              	Maps Loaded count
  */
-stock PUG_GetMapList(szData[][],iLen)
+stock PUG_GetMapList(szData[][],iLen,StayHere)
 {
 	new szPath[PLATFORM_MAX_PATH];
 	PUG_GetFilePath("maps.rc",szPath,charsmax(szPath));
+
+	new iCount;
+	if(StayHere)
+		copy(szData[iCount++],iLen,fmt("%L",LANG_SERVER,"PUG_VOTEMAP_STAYHERE"));
 	
 	if(file_exists(szPath))
 	{
 		new iFile = fopen(szPath,"rb");
-		new szLine[MAX_NAME_LENGTH],iCount;
+		new szLine[MAX_NAME_LENGTH];
 	
 		while(!feof(iFile) && (iCount < iLen))
 		{

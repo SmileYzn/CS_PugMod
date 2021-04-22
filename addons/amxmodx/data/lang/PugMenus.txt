@@ -11,6 +11,8 @@ PUG_TEAM_TYPE_SWAP		= Swap Teams
 
 PUG_VOTEMAP_NEXTMAP 		= Changing map to %s...
 PUG_VOTEMAP_START 		= Choose the start map.
+PUG_VOTEMAP_STAYHERE 	= Stay Here
+PUG_VOTEMAP_STAYHERE_WIN	= The map will not change
 PUG_NOVOTES 			= No votes.
 PUG_VOTE_CHOOSED 		= %s choosed %s
 PUG_VOTEMAP_FAIL 		= The map choice has failed:
@@ -42,6 +44,8 @@ PUG_TEAM_TYPE_SWAP		= Trocar Times
 
 PUG_VOTEMAP_NEXTMAP 		= O proximo mapa sera %s...
 PUG_VOTEMAP_START 		= Escolha do mapa iniciada.
+PUG_VOTEMAP_STAYHERE 	= Fique aqui
+PUG_VOTEMAP_STAYHERE_WIN	= O mapa não muda
 PUG_NOVOTES 			= Nenhum voto.
 PUG_VOTE_CHOOSED 		= %s escolheu %s
 PUG_VOTEMAP_FAIL 		= A escolha do mapa falhou:

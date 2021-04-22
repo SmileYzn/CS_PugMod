@@ -10,6 +10,7 @@
 #define PUG_TASK_HUDS_CAPTAIN	2021
 
 new g_pVoteDelay;
+new g_pMapVoteStayHere;
 new g_pMapVoteType;
 new g_pMapVote;
 new g_pTeamEnforcement;
@@ -38,15 +39,16 @@ public plugin_init()
 	g_pPlayersMax = get_cvar_pointer("pug_players_max");
 	
 	g_pVoteDelay = create_cvar("pug_vote_delay","15.0",FCVAR_NONE,"How long voting session goes on");
+	g_pMapVoteStayHere = create_cvar("pug_vote_map_stayhere","1",FCVAR_NONE,"Add 'Stay Here' option at top of vote map to choose the current map");
 	g_pMapVoteType = create_cvar("pug_vote_map_enabled","1",FCVAR_NONE,"Active vote map in pug (0 Disable, 1 Enable, 2 Random map)");
-	g_pMapVote = create_cvar("pug_vote_map","0",FCVAR_NONE,"Determine if current map will have the vote map (Not used at Pug config file)");
+	g_pMapVote = create_cvar("pug_vote_map","0",FCVAR_NONE,"Determine if current map will have the vote map (Not used at Pug config file)")
 	g_pTeamEnforcement = create_cvar("pug_teams_enforcement","0",FCVAR_NONE,"The teams method for assign teams (0 Vote, 1 Captains, 2 Random, 3 None, 4 Skill Balanced, 5 Swap Teams)");
 }
 
 public OnConfigsExecuted()
 {
 	g_iMenuMap  = menu_create("PUG_HUD_MAP","HANDLER_MenuVote",true);
-	g_iMapCount = PUG_GetMapList(g_szMapList,sizeof(g_szMapList[]));
+	g_iMapCount = PUG_GetMapList(g_szMapList,sizeof(g_szMapList[]), get_pcvar_num(g_pMapVoteStayHere));
 
 	for(new i;i < g_iMapCount;i++)
 	{
@@ -90,11 +92,12 @@ public PUG_Event(iState)
 				new szMap[MAX_NAME_LENGTH];
 				get_mapname(szMap,charsmax(szMap));
 				
-				new MapIndex = random(g_iMapCount);
+				new StayHere = get_pcvar_num(g_pMapVoteStayHere);
+				new MapIndex = random_num(StayHere, g_iMapCount);
 		
 				while(equali(szMap,g_szMapList[MapIndex]) || !is_map_valid(g_szMapList[MapIndex]))
 				{
-					MapIndex = random(g_iMapCount);
+					MapIndex = random_num(StayHere, g_iMapCount);
 				}
 				
 				set_pcvar_num(g_pMapVote,0);
@@ -355,9 +358,18 @@ PUG_GetVoteCount(iType)
 		}
 	
 		set_pcvar_num(g_pMapVote,0);
-		set_task(5.0,"PUG_ChangeLevel",iWinner);
+
+		if(get_pcvar_num(g_pMapVoteStayHere) && (iWinner == 0))
+		{
+			client_print_color(0,print_team_red,"%s %L",PUG_MOD_HEADER,LANG_SERVER,"PUG_VOTEMAP_STAYHERE_WIN");
+			set_task(5.0, "PUG_Event", PUG_GetState());
+		}
+		else
+		{
+			set_task(5.0,"PUG_ChangeLevel",iWinner);
 		
-		client_print_color(0,print_team_red,"%s %L",PUG_MOD_HEADER,LANG_SERVER,"PUG_VOTEMAP_NEXTMAP",g_szMapList[iWinner]);
+			client_print_color(0,print_team_red,"%s %L",PUG_MOD_HEADER,LANG_SERVER,"PUG_VOTEMAP_NEXTMAP",g_szMapList[iWinner]);
+		}
 		
 		return g_iMapVotes[iWinner];
 	}

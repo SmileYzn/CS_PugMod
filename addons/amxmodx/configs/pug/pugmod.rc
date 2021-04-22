@@ -6,9 +6,10 @@ pug_force_ot		"1"			// Force Overtime (0 End tied, 1 Force Overtime)
 pug_allow_spec		"1"			// Allow Spectators in game
 pug_allow_hltv		"1"			// Allow HLTV in game
 pug_handle_time		"10.0"			// Time to PUG change states
-pug_drop_ban_time	"15"			// Minutes of ban players that leave from game in live
+pug_drop_ban_time	"0"			// Minutes of ban players that leave from game in live
 pug_ready_type		"1"			// Ready system sype (1 Ready commands, 0 Timer Counter)
 pug_vote_delay		"15.0"			// How long voting session goes on
+pug_vote_map_stayhere	"1"			// Add 'Stay Here' option at top of vote map to choose the current map
 pug_vote_map_enabled	"1"			// Active vote map in pug (0 Disable, 1 Enable, 2 Random map)
 pug_teams_enforcement	"0"			// The teams method for assign teams (0 Vote, 1 Captains, 2 Random, 3 None, 4 Skill Balanced, 5 Swap Teams)
 pug_vote_percent	"0.7"			// Vote percent to execute actions
